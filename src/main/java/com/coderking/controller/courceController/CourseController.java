@@ -2,7 +2,6 @@ package com.coderking.controller.courceController;
 
 import com.coderking.model.cources.Course;
 import com.coderking.service.courcesService.CourseService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
