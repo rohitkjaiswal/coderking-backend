@@ -1,0 +1,16 @@
+version: "1"
+projects:
+  - name: coderking
+    environments:
+      - name: Production
+        services:
+          - type: web
+            name: coderking-backend
+            runtime: java
+            jdkVersion: 21
+            repo: https://github.com/rohitkjaiswal/coderking-backend
+            plan: free
+            region: oregon
+            buildCommand: ./mvnw clean install
+            startCommand: java -jar target/coderking-backend-0.0.1-SNAPSHOT.jar
+            autoDeployTrigger: commit
