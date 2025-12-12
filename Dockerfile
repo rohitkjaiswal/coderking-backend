@@ -16,8 +16,8 @@ FROM eclipse-temurin:21-jre
 # Step 6: Set working directory
 WORKDIR /app
 
-# Step 7: Copy the JAR file from the build stage
-COPY --from=build /app/target/*.jar app.jar
+# Step 7: Copy the fat JAR explicitly
+COPY --from=build /app/target/coderking-backend-1.0.0.jar app.jar
 
 # Step 8: Expose port (Spring Boot default is 8080)
 EXPOSE 8080
