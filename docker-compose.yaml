@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  coderking-backend:
+    build: .
+    container_name: coderking-backend
+    ports:
+      - "9090:8080"   # host:container
+    environment:
+      # Switch profile easily: dev or prod
+      SPRING_PROFILES_ACTIVE: dev
+
+      # Dev DB (local MySQL container)
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coderKing
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rohitroot
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
+
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: coderking-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rohitroot
+      MYSQL_DATABASE: coderKing
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

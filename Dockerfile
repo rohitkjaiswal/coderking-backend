@@ -22,5 +22,5 @@ COPY --from=build /app/target/coderking-backend-1.0.0.jar app.jar
 # Step 8: Expose port (Spring Boot default is 8080)
 EXPOSE 8080
 
-# Step 9: Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Step 9: Run the application with preview features enabled
+ENTRYPOINT ["java", "--enable-preview", "-jar", "app.jar"]
